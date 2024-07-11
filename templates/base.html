@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    {% block head %}{% endblock %}
+
+    <title class="font-color">{% block title %}{% endblock %}</title>
+  </head>
+  <body class="font-color">
+    <div id="image-background">
+      <!--background image-->
+      <div id="menu-background">
+        <!--background with transparency block-->
+        <header>
+          <h1>{{business_info['name']}}</h1>
+          <h4>{{business_info['slogan']}}</h4>
+        </header>
+        <main>{% block content %}{% endblock %}</main>
+        <footer>
+          <p>{{business_info['direction']}}</p>
+          <p>{{business_info['phone']}}</p>
+          <p>{{business_info['email']}}</p>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
