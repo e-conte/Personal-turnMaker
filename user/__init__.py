@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from common import common
+import common
 
 user_routes = Blueprint('user_routes', __name__)
 

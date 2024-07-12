@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
 #blueprints
-from user.user import user_routes
-from business.business import business_routes
-from common.common import common_variables
+from user import user_routes
+from business import business_routes
+from common import common_variables
 
 
 app = Flask(__name__)

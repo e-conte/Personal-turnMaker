@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+import common
 
 business_routes = Blueprint('business_routes', __name__)
 
