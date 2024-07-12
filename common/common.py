@@ -27,5 +27,5 @@ colors = {"white" : '/static/white_style.css',
           "custom": '/static/custom_style.css',
 }
 
-business_color = colors['white']  # this is the font color/style
+business_color = colors['red']  # this is the font color/style
 
