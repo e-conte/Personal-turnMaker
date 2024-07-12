@@ -21,11 +21,11 @@ business_menu = {
 }
 # De style.css #image_background + #menu_background 
 
-colors = ("white",
-          "black",
-          "red",
-          "custom",
-)
+colors = {"white" : '/static/white_style.css',
+          "black" : '/static/black_style.css',
+          "red": '/static/red_style.css',
+          "custom": '/static/custom_style.css',
+}
 
-business_color = colors[2]
+business_color = colors['red']  # this is the font color/style
 
