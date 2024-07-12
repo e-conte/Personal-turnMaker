@@ -26,7 +26,7 @@ def index():
 @user_routes.route('/' +f'{href_menu[0]}', methods=['GET', 'POST'])
 def first_line():
 
-    return render_template(f'{business_menu.keys()[0]}' +'.html',
+    return render_template(f'{list(business_menu.keys())[0]}' +'.html',
                            business_info=business_info,
                            business_color=business_color,
                            href_menu=href_menu
@@ -35,7 +35,7 @@ def first_line():
 @user_routes.route('/' +f'{href_menu[1]}', methods=['GET', 'POST'])
 def second_line():
 
-    return render_template(f'{business_menu.keys()[1]}'+'.html',
+    return render_template(f'{list(business_menu.keys())[1]}'+'.html',
                            business_info=business_info,
                            business_color=business_color,
                            href_menu=href_menu
@@ -44,16 +44,16 @@ def second_line():
 @user_routes.route('/' +f'{href_menu[2]}', methods=['GET', 'POST'])
 def third_line():
 
-    return render_template(f'{business_menu.keys()[2]}'+'.html',
+    return render_template(f'{list(business_menu.keys())[2]}'+'.html',
                            business_info=business_info,
                            business_color=business_color,
                            href_menu=href_menu
                            )
 
-@user_routes.route('/' +f'{href_menu[2]}', methods=['GET', 'POST'])
+@user_routes.route('/' +f'{href_menu[3]}', methods=['GET', 'POST'])
 def fourth_line():
 
-    return render_template(f'{business_menu.keys()[2]}'+'.html',
+    return render_template(f'{list(business_menu.keys())[3]}'+'.html',
                            business_info=business_info,
                            business_color=business_color,
                            href_menu=href_menu
