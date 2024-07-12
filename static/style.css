@@ -4,12 +4,8 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
-  color: rgb(255, 255, 255);
 }
 
-body {
-  background-color: red;
-}
 #image-background {
   background: url("../static/background.jpg") no-repeat center;
   background-size: cover;
@@ -46,20 +42,4 @@ li {
   flex-direction: column;
   justify-content: space-between;
   background-color: rgba(15, 15, 15, 0.5);
-}
-
-.white {
-  color: white;
-}
-
-.black {
-  color: black;
-}
-
-.red {
-  color: red;
-}
-
-.custom {
-  color: blue;
 }

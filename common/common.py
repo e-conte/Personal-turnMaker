@@ -4,7 +4,7 @@ common_variables = Blueprint('common_variables', __name__)
 
 #variables
 business_info = {
-    "name" : "<h1>Business Name</h1>",
+    "name" : "Business Name",
     "slogan" : "Business Slogan",
     "direction" : "Business Direction",
     "phone" : "Business Phone",
@@ -19,10 +19,13 @@ business_menu = {
     "fourth_line" : "Tarifas",
     
 }
-# faltan style.css #image_background + colores
+# De style.css #image_background + #menu_background 
 
-business_color = ("white",  #change from user
-                  "black",
-                  "red",
-                  "custom",
-) 
+colors = ("white",
+          "black",
+          "red",
+          "custom",
+)
+
+business_color = colors[2]
+
