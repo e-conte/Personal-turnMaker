@@ -15,7 +15,9 @@ block content %}
       {% endfor %}
     </tbody>
   </table>
-  <p style="text-align: center;">Precios expresados en pesos</p>
-  <p style="text-align: center;"> <a class="back-button" id="da" href="{{url_for('index')}}">Volver</a></p>
+  <p style="text-align: center">Precios expresados en {{_moneda}}</p>
+  <p style="text-align: center">
+    <a class="back-button" id="da" href="{{url_for('index')}}">Volver</a>
+  </p>
 </div>
 {% endblock %}
