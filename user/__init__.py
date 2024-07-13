@@ -43,8 +43,12 @@ def second_line():
 
 @user_routes.route('/' +f'{href_menu[2]}', methods=['GET', 'POST'])
 def third_line():
+    
+    information_list = common.business_third_line
+
 
     return render_template(f'{list(business_menu.keys())[2]}'+'.html',
+                           information_list=information_list,
                            business_info=business_info,
                            business_color=business_color,
                            href_menu=href_menu
