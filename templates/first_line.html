@@ -6,7 +6,7 @@
     {% for item in _form_data %}
     <input style = 'text-align: center; padding: 8px ; margin: 3px;'  placeholder="{{item}}" value="{{_form_data[item]}}"></br>
     {% endfor  %}
-    <input id="submit" value="Submit">
+    <button id="submit" value="Submit">Enviar</button>
   </form>
   <a class="back-button" href="{{url_for('index')}}">Volver</a>
 </div>
