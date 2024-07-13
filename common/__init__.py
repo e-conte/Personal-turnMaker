@@ -35,7 +35,7 @@ colors = {"white" : '/static/white_style.css',
 business_color = colors['red']  # this is the font color/style
 
 
-business_fourth_line = {
+business_fourth_line_prices = {
     'Cambio de aceite y filtros': '15',
     'Inspección de niveles de aceite': '0',
     'Ajuste de válvulas': '10',
@@ -46,5 +46,6 @@ business_fourth_line = {
     'Reparación de radiadores': '20',
 }
 
-business_third_line = list(business_fourth_line.keys())
+business_third_line = list(business_fourth_line_prices.keys())
 # (ID min_padding fixes the height of this section)
+
