@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, requests 
+from flask import Blueprint, render_template
 import common
-
+import requests 
 
 user_routes = Blueprint('user_routes', __name__)
 
@@ -28,9 +28,12 @@ def index():
 def first_line():
 
     _h3 = business_menu['first_line']
+    
+    _form_data = common.client_form_data
 
     return render_template(f'{list(business_menu.keys())[0]}' +'.html',
                            _h3 =_h3,
+                           _form_data=_form_data,
                            business_info=business_info,
                            business_color=business_color,
                            href_menu=href_menu
