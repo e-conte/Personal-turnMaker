@@ -1,12 +1,23 @@
 body,
-a {
+a,
+#submit {
   color: black;
 }
 
 /*#menu-background {*/
 
-.back-button {
+.back-button,
+#submit {
   border: 2px solid black;
   border-radius: 10px;
   margin: 0.5%;
+}
+
+th:nth-child(n + 2),
+td:nth-child(n + 2) {
+  border-left: 1px solid white;
+  color: white;
+}
+tr {
+  border: 1px solid white;
 }

@@ -90,9 +90,16 @@ table {
   align-items: center;
 }
 
-#first-line, #second-line{
+#first-line,
+#second-line,
+form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+#submit {
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
 }

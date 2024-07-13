@@ -1,23 +1,23 @@
 body,
-a {
+a,
+#submit {
   color: blue;
 }
 
 /*#menu-background {*/
 
-.back-button {
-  border: 2px solid red;
+.back-button,
+#submit {
+  border: 2px solid blue;
   border-radius: 10px;
   margin: 0.5%;
 }
 
-
 th:nth-child(n + 2),
-td:nth-child(n + 2)  {
+td:nth-child(n + 2) {
   border-left: 1px solid white;
   color: white;
-
 }
-tr{
-border: 1px solid white;
+tr {
+  border: 1px solid white;
 }
