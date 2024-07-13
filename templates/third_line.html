@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block title %}{{href_menu[2]}}{% endblock %}
 {%block content %}
 <ul>
-  {% for line in information_list %}
+  {% for line in _information_list %}
   <li id="min-padding">{{line}}</li>
   {% endfor %}
   <li class="back-button"><a href="{{url_for('index')}}">Volver</a></li>
