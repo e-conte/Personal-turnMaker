@@ -2,6 +2,12 @@
 {%block content %}
 <div id="first-line">
   <h3>{{_h3}}</h3>
-  <a class="back-button" id="da" href="{{url_for('index')}}">Volver</a>
+  <form>
+    {% for item in _form_data %}
+    <input style = 'text-align: center; padding: 8px ; margin: 3px;'  placeholder="{{item}}" value="{{_form_data[item]}}"></br>
+    {% endfor  %}
+    <input id="submit" value="Submit">
+  </form>
+  <a class="back-button" href="{{url_for('index')}}">Volver</a>
 </div>
 {% endblock %}
