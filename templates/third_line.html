@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block title %}{{href_menu[2]}}{% endblock %}
 {%block content %}
 <ul>
+  <h3>{{_h3}}</h3>
   {% for line in _information_list %}
   <li style="padding: 0.25% 0">{{line}}</li>
   {% endfor %}

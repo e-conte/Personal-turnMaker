@@ -2,6 +2,10 @@
 
 {% block title %}{{href_menu[1]}}{% endblock %}
 
-{%block content %} 
-Here the ticket will be generated
+{%block content %}
+<div id="second-line">
+    <h3>{{_h3}}</h3>
+    <a class="back-button" id="da" href="{{url_for('index')}}">Volver</a>
+  </div>
+
 {% endblock %}

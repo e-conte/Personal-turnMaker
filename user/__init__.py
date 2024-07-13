@@ -1,6 +1,5 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, requests 
 import common
-import requests, time
 
 
 user_routes = Blueprint('user_routes', __name__)
@@ -11,10 +10,9 @@ business_color = common.business_color
 business_menu = common.business_menu
 href_menu = common.href_menu
 
-
 @user_routes.route('/', methods=['GET', 'POST'])
 def index():
-
+    
     _index_menu = {}
     _index_menu = common.business_menu          
     
@@ -25,39 +23,53 @@ def index():
                            business_color=business_color,
                            ) 
    
+
 @user_routes.route('/' +f'{href_menu[0]}', methods=['GET', 'POST'])
 def first_line():
 
+    _h3 = business_menu['first_line']
+
     return render_template(f'{list(business_menu.keys())[0]}' +'.html',
+                           _h3 =_h3,
                            business_info=business_info,
                            business_color=business_color,
                            href_menu=href_menu
                            )
+
 
 @user_routes.route('/' +f'{href_menu[1]}', methods=['GET', 'POST'])
 def second_line():
+    
+    _h3 = business_menu['second_line']
 
     return render_template(f'{list(business_menu.keys())[1]}'+'.html',
+                           _h3 = _h3,
                            business_info=business_info,
                            business_color=business_color,
                            href_menu=href_menu
                            )
+    
 
 @user_routes.route('/' +f'{href_menu[2]}', methods=['GET', 'POST'])
 def third_line():
     
     _information_list = common.business_third_line
-
-
+    _h3 = business_menu['third_line']
+    
     return render_template(f'{list(business_menu.keys())[2]}'+'.html',
+                           _h3=_h3,
                            _information_list=_information_list,
                            business_info=business_info,
                            business_color=business_color,
                            href_menu=href_menu
                            )
+    
 
 @user_routes.route('/' +f'{href_menu[3]}', methods=['GET', 'POST'])
 def fourth_line():
+
+    _h3 = business_menu['fourth_line']
+
     try:
         _response = requests.get("https://dolarapi.com/v1/dolares",timeout = 3)
         #print(response.json())
@@ -82,6 +94,7 @@ def fourth_line():
         _moneda = "dolares"
     
     return render_template(f'{list(business_menu.keys())[3]}'+'.html',
+                           _h3=_h3,
                            _business_prices_in_uss=_business_prices_in_uss,
                            _moneda=_moneda,                  
                            business_info=business_info,
