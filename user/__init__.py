@@ -70,12 +70,19 @@ def fourth_line():
             _dolar_blue_2 = float(_response_2.json()['blue']['value_sell'])
         except:
             _dolar_blue = 0
-            
-    _business_prices = common.business_fourth_line_prices
-          
+    
+    _business_prices_in_uss = {}
+    if _dolar_blue != 0:
+        _moneda = "pesos"
+        _business_prices = common.business_fourth_line_prices
+        for  prices_in_uss in _business_prices:
+            _business_prices_in_uss[prices_in_uss] = round(float(_business_prices[prices_in_uss]) * _dolar_blue, )
+    else:
+        _moneda = "dolares"
     
     return render_template(f'{list(business_menu.keys())[3]}'+'.html',
-                           _business_prices=_business_prices,
+                           _business_prices_in_uss=_business_prices_in_uss,
+                           _moneda=_moneda,                  
                            business_info=business_info,
                            business_color=business_color,
                            href_menu=href_menu
