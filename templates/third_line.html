@@ -2,7 +2,7 @@
 {%block content %}
 <ul>
   {% for line in _information_list %}
-  <li id="min-padding">{{line}}</li>
+  <li style="padding: 0.25% 0">{{line}}</li>
   {% endfor %}
   <li class="back-button"><a href="{{url_for('index')}}">Volver</a></li>
 </ul>
