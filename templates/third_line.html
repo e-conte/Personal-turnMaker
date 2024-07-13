@@ -1,2 +1,9 @@
-{% extends 'base.html' %} {% block title %}{{href_menu[2]}}{% endblock %} {%
-block content %} Here the ticket will be generated {% endblock %}
+{% extends 'base.html' %} {% block title %}{{href_menu[2]}}{% endblock %}
+{%block content %}
+<ul>
+  {% for line in information_list %}
+  <li id="min-padding">{{line}}</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
