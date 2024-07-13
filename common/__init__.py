@@ -49,3 +49,24 @@ business_fourth_line_prices = {
 business_third_line = list(business_fourth_line_prices.keys())
 # (ID min_padding fixes the height of this section)
 
+
+#dolar need to be saved
+"""
+        _response = requests.get("https://dolarapi.com/v1/dolares",timeout = 3)
+        #print(response.json())
+        for coin in _response.json():
+            if coin['casa'] == 'blue':
+                _dolar_blue = float(coin['venta'])
+    except:
+        for attempt in range(3):
+            try:
+                _response_2 = requests.get("https://api.bluelytics.com.ar/v2/latest" ,timeout = 3)
+                _dolar_blue_2 = float(_response_2.json()['blue']['value_sell'])
+"""
+
+client_form_data = {'name':'Nombre',
+                    'last_name':'Apellido',
+                    'email':'Email',
+                    'phone':'Teléfono',
+                    'car_model':'Auto-Modelo',}
+
