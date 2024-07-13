@@ -1,17 +1,21 @@
 {% extends 'base.html' %} {% block title %} {{href_menu[2]}} {% endblock %} {%
 block content %}
-<table>
-  <tbody>
-    <tr>
-      <th>Trabajo</th>
-      <th>Tarifa</th>
-    </tr>
-    {% for item in _business_prices %}
-    <tr>
-      <td>{{item}}</td>
-      <td>{{_business_prices[item]}}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<div>
+  <table>
+    <tbody>
+      <tr>
+        <th>Trabajo</th>
+        <th>Tarifa</th>
+      </tr>
+      {% for item in _business_prices_in_uss %}
+      <tr>
+        <td>{{item}}</td>
+        <td>{{_business_prices_in_uss[item]}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p style="text-align: center;">Precios expresados en pesos</p>
+  <p style="text-align: center;"> <a class="back-button" id="da" href="{{url_for('index')}}">Volver</a></p>
+</div>
 {% endblock %}
