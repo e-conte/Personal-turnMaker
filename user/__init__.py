@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 import common
-import requests
+import requests, time
 
 
 user_routes = Blueprint('user_routes', __name__)
@@ -59,17 +59,18 @@ def third_line():
 @user_routes.route('/' +f'{href_menu[3]}', methods=['GET', 'POST'])
 def fourth_line():
     try:
-        _response = requests.get("https://dolarapi.com/v1/dolares")
+        _response = requests.get("https://dolarapi.com/v1/dolares",timeout = 3)
         #print(response.json())
         for coin in _response.json():
             if coin['casa'] == 'blue':
                 _dolar_blue = float(coin['venta'])
     except:
-        try:
-            _response_2 = requests.get("https://api.bluelytics.com.ar/v2/latest")
-            _dolar_blue_2 = float(_response_2.json()['blue']['value_sell'])
-        except:
-            _dolar_blue = 0
+        for attempt in range(3):
+            try:
+                _response_2 = requests.get("https://api.bluelytics.com.ar/v2/latest" ,timeout = 3)
+                _dolar_blue_2 = float(_response_2.json()['blue']['value_sell'])
+            except:
+                _dolar_blue = 0
     
     _business_prices_in_uss = {}
     if _dolar_blue != 0:
