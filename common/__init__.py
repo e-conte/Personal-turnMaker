@@ -34,14 +34,17 @@ colors = {"white" : '/static/white_style.css',
 }
 business_color = colors['red']  # this is the font color/style
 
-business_third_line = [
-    'Cambio de aceite y filtros',
-    'Inspección de niveles de aceite',
-    'Ajuste de válvulas',
-    'Remplazo de bujías',
-    'Cambio de fluidos de transmisión',
-    'Cambio de pastillas las de freno',
-    'Inspección y remplazo de batería',
-    'Reparación de radiadores'
-]       
+
+business_fourth_line = {
+    'Cambio de aceite y filtros': '15',
+    'Inspección de niveles de aceite': '0',
+    'Ajuste de válvulas': '10',
+    'Remplazo de bujías':'5',
+    'Cambio de fluidos de transmisión':'5',
+    'Cambio de pastillas las de freno':'12',
+    'Inspección y remplazo de batería':'60',
+    'Reparación de radiadores': '20',
+}
+
+business_third_line = list(business_fourth_line.keys())
 # (ID min_padding fixes the height of this section)
