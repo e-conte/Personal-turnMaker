@@ -2,8 +2,6 @@ from flask import Blueprint
 
 common_variables = Blueprint('common_variables', __name__)
 
- 
-
 
 #variables
 business_info = {
@@ -20,7 +18,8 @@ business_menu = {
     "third_line" : "Nuestros servicios",
     "fourth_line" : "Tarifas",
 }
-#processing information
+
+#processing business menu information we get href for the menu
 href_menu =[]
 for line in business_menu.values():
     href_menu.append(line.lower().replace(" ", "_"))
@@ -35,3 +34,14 @@ colors = {"white" : '/static/white_style.css',
 }
 business_color = colors['red']  # this is the font color/style
 
+business_third_line = [
+    'Cambio de aceite y filtros',
+    'Inspección de niveles de aceite',
+    'Ajuste de válvulas',
+    'Remplazo de bujías',
+    'Cambio de fluidos de transmisión',
+    'Cambio de pastillas las de freno',
+    'Inspección y remplazo de batería',
+    'Reparación de radiadores'
+]       
+# (ID min_padding fixes the height of this section)
