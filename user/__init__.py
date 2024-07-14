@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, url_for
 import common
-import requests 
+import requests
 
 user_routes = Blueprint('user_routes', __name__)
 
@@ -30,10 +30,28 @@ def first_line():
     _h3 = business_menu['first_line']
     
     _form_data = common.client_form_data
+    
+    _form_posible_date = common.client_form_posible_date
+    
+    _form_posible_date_time = common.business_schedule['Lunes a Viernes']['mañana']
 
     return render_template(f'{list(business_menu.keys())[0]}' +'.html',
                            _h3 =_h3,
                            _form_data=_form_data,
+                           _form_posible_date=_form_posible_date,
+                           _form_posible_date_time=_form_posible_date_time,
+                           business_info=business_info,
+                           business_color=business_color,
+                           href_menu=href_menu
+                           )
+
+@user_routes.route('/' +f'{href_menu[0]}', methods=['GET', 'POST'])
+def first_line_submit_form():
+    
+    
+    flash('Turno reservado con éxito')
+    
+    return render_template(f'{list(business_menu.keys())[0]}' +'.html',
                            business_info=business_info,
                            business_color=business_color,
                            href_menu=href_menu
@@ -42,9 +60,9 @@ def first_line():
 
 @user_routes.route('/' +f'{href_menu[1]}', methods=['GET', 'POST'])
 def second_line():
-    
-    _h3 = business_menu['second_line']
 
+    _h3 = business_menu['second_line']
+    
     return render_template(f'{list(business_menu.keys())[1]}'+'.html',
                            _h3 = _h3,
                            business_info=business_info,
