@@ -1,6 +1,10 @@
 from flask import Blueprint, render_template, url_for
 import common
 import requests
+import datetime
+import locale
+
+
 
 user_routes = Blueprint('user_routes', __name__)
 
@@ -12,7 +16,7 @@ href_menu = common.href_menu
 
 @user_routes.route('/', methods=['GET', 'POST'])
 def index():
-    
+      
     _index_menu = {}
     _index_menu = common.business_menu          
     
@@ -30,15 +34,26 @@ def first_line():
     _h3 = business_menu['first_line']
     
     _form_data = common.client_form_data
-    
-    _form_posible_date = common.client_form_posible_date
-    
+       
     _form_posible_date_time = common.business_schedule['Lunes a Viernes']['mañana']
+    
+    locale.setlocale(locale.LC_ALL, 'es_AR.UTF8')
+
+    _range_of_days = common.range_of_date
+    _today = datetime.date.today()
+    _days = {}
+    
+    for i in range (_range_of_days):
+        _date = _today + datetime.timedelta(days=i)
+        _num_day = _date.day
+        _week_day = " de "+_date.strftime("%B") + ", " + _date.strftime("%A")
+        _days[_num_day] = _week_day
 
     return render_template(f'{list(business_menu.keys())[0]}' +'.html',
                            _h3 =_h3,
                            _form_data=_form_data,
-                           _form_posible_date=_form_posible_date,
+                           _days=_days,
+                           #_form_posible_date=_form_posible_date,
                            _form_posible_date_time=_form_posible_date_time,
                            business_info=business_info,
                            business_color=business_color,
@@ -48,9 +63,7 @@ def first_line():
 @user_routes.route('/' +f'{href_menu[0]}', methods=['GET', 'POST'])
 def first_line_submit_form():
     
-    
-    flash('Turno reservado con éxito')
-    
+        
     return render_template(f'{list(business_menu.keys())[0]}' +'.html',
                            business_info=business_info,
                            business_color=business_color,
