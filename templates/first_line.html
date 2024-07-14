@@ -1,25 +1,36 @@
 {% extends 'base.html' %} {% block title %}{{href_menu[0]}}{% endblock %}
+
 {%block content %}
+
 <div id="first-line">
   <h3>{{_h3}}</h3>
   <form action="{{'/user/'+href_menu[0]}}" method="POST">
     {% for item in _form_data %}
-    <input style = 'text-align: center; padding: 8px ; margin: 3px;'  placeholder="{{item}}" value="{{_form_data[item]}}"></br>
+    <input style = 'text-align: center; padding: 8px ; margin: 3px; border-radius: 5px;'  placeholder="{{_form_data[item]}}" required></br>
     {% endfor  %}
-    <label>Elije un día</label></br>
-    <select name="date" id="date">
-    {% for date in _form_posible_date %}
-      <option value = "{{_form_posible_date[date]}}">{{_form_posible_date[date]}}</option>
+    <select oninput="enableSelector()" id="first-select" name="date" style="text-align: left; padding: 8px ; margin: 3px;" required>
+    <option value="option-1">Selecciona un día</option>
+    {% for day in _days %}
+      <option style="text-align: left; padding: 8px ; margin: 3px;" value = "{{day}}">{{day}} {{_days[day]}} </option>
     {% endfor %}
   </select>
-  <label>Elije una hora</label></br>
-  <select>
+  <select id="second-select" name = "time" style="text-align: left; padding: 8px ; margin: 3px;" required disabled>
+    <option value="option-2">Selecciona un horario</option>
     {% for time in _form_posible_date_time %}
-      <option value = "{{time}}">{{time}}</option>  
+      <option style="text-align: left; padding: 8px ; margin: 3px;" value = "{{time}}">{{time}}</option>  
     {% endfor %}
   </select>
     <button id="submit" value="Submit">Enviar</button>
   </form>
   <a class="back-button" href="{{url_for('index')}}">Volver</a>
 </div>
+
+<script>
+  function enableSelector() {
+  if (document.getElementById("first-select").value != "") {
+    document.getElementById("second-select").removeAttribute("disabled");
+  }
+} 
+</script>
+<!-- usar el script para todos y separar el select en otro form para habilitar la hora -->
 {% endblock %}
