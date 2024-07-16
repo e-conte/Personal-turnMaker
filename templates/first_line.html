@@ -8,29 +8,52 @@
     {% for item in _form_data %}
     <input style = 'text-align: center; padding: 8px ; margin: 3px; border-radius: 5px;'  placeholder="{{_form_data[item]}}" required></br>
     {% endfor  %}
-    <select oninput="enableSelector()" id="first-select" name="date" style="text-align: left; padding: 8px ; margin: 3px;" required>
-    <option value="option-1">Selecciona un día</option>
+    <select oninput="enableSelector()" onchange="timeMaker()" id="first-select" name="date" style="text-align: left; padding: 8px ; margin: 3px;" required>
+    <option value="">Selecciona un día</option>
     {% for day in _days %}
-      <option style="text-align: left; padding: 8px ; margin: 3px;" value = "{{day}}">{{day}} {{_days[day]}} </option>
+      <option style="text-align: left; padding: 8px ; margin: 3px;" value = "{{_days[day]}}">{{day}} {{_days[day]}} </option>
     {% endfor %}
   </select>
   <select id="second-select" name = "time" style="text-align: left; padding: 8px ; margin: 3px;" required disabled>
-    <option value="option-2">Selecciona un horario</option>
-    {% for time in _form_posible_date_time %}
-      <option style="text-align: left; padding: 8px ; margin: 3px;" value = "{{time}}">{{time}}</option>  
-    {% endfor %}
-  </select>
-    <button id="submit" value="Submit">Enviar</button>
-  </form>
-  <a class="back-button" href="{{url_for('index')}}">Volver</a>
-</div>
+    <option value="">Selecciona un horario</option>
 
+  </select>
 <script>
   function enableSelector() {
   if (document.getElementById("first-select").value != "") {
     document.getElementById("second-select").removeAttribute("disabled");
   }
-} 
-</script>
-<!-- usar el script para todos y separar el select en otro form para habilitar la hora -->
-{% endblock %}
+}
+function timeMaker() {
+  const secondSelect= document.getElementById("second-select")
+  const saturdayJson = JSON.parse("{{_form_time_for_saturday | safe}}".replace(/'/g, '"'));
+  const weekJson = JSON.parse("{{_form_time_for_week | safe}}".replace(/'/g, '"'));
+  console.log(saturdayJson)
+  console.log(weekJson)
+  for (time in weekJson){
+    if (document.getElementById(weekJson[time]) != null)
+    document.getElementById(weekJson[time]).remove();
+  }
+  for (time in saturdayJson){
+    if(document.getElementById(saturdayJson[time]) != null)
+    document.getElementById(saturdayJson[time]).remove();
+  }
+  if ((document.getElementById("first-select").value).includes("sábado") == true){
+    for (time in saturdayJson){
+      const option = document.createElement("option");
+      option.value = saturdayJson[time];
+      option.text = saturdayJson[time] + " hs";
+      option.id = saturdayJson[time]
+      secondSelect.appendChild(option);
+    }
+  }else{
+    for (time in weekJson){
+      const option = document.createElement("option");
+      option.value = weekJson[time];
+      option.text = weekJson[time] + " hs";
+      option.id = weekJson[time]
+      secondSelect.appendChild(option);
+  }
+}
+}
+</script>{% endblock %}

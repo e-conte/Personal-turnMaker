@@ -32,29 +32,30 @@ def index():
 def first_line():
 
     _h3 = business_menu['first_line']
-    
     _form_data = common.client_form_data
-       
-    _form_posible_date_time = common.business_schedule['Lunes a Viernes']['mañana']
-    
     locale.setlocale(locale.LC_ALL, 'es_AR.UTF8')
-
+    _form_time_for_saturday = common.business_schedule['Sábados']['mañana']
+    aux = common.business_schedule['Lunes a Viernes']['mañana']
+    _form_time_for_week = aux + common.business_schedule['Lunes a Viernes']['tarde']
     _range_of_days = common.range_of_date
     _today = datetime.date.today()
     _days = {}
     
     for i in range (_range_of_days):
         _date = _today + datetime.timedelta(days=i)
-        _num_day = _date.day
-        _week_day = " de "+_date.strftime("%B") + ", " + _date.strftime("%A")
-        _days[_num_day] = _week_day
-
+        if _date.strftime("%A") != 'domingo':
+            _num_day = _date.day
+            _week_day = " de "+_date.strftime("%B") + ", " + _date.strftime("%A")
+            _days[_num_day] = _week_day
+   
+    print(_form_time_for_saturday)
     return render_template(f'{list(business_menu.keys())[0]}' +'.html',
+
                            _h3 =_h3,
                            _form_data=_form_data,
                            _days=_days,
-                           #_form_posible_date=_form_posible_date,
-                           _form_posible_date_time=_form_posible_date_time,
+                           _form_time_for_saturday=_form_time_for_saturday,
+                           _form_time_for_week=_form_time_for_week,
                            business_info=business_info,
                            business_color=business_color,
                            href_menu=href_menu
