@@ -16,8 +16,10 @@
   </select>
   <select id="second-select" name = "time" style="text-align: left; padding: 8px ; margin: 3px;" required disabled>
     <option value="">Selecciona un horario</option>
-
   </select>
+  <button id="submit" value="Submit">Enviar</button>
+  </form>
+  <a class="back-button" id="da" href="{{url_for('index')}}">Volver</a>
 <script>
   function enableSelector() {
   if (document.getElementById("first-select").value != "") {
