@@ -4,7 +4,7 @@
 
 <div id="first-line">
   <h3>{{_h3}}</h3>
-  <form action="{{'/user/'+href_menu[0]}}" method="POST">
+  <form action="{{'/user/'+href_menu[0]}}/form" method="POST">
     {% for item in _form_data %}
     <input style = 'text-align: center; padding: 8px ; margin: 3px; border-radius: 5px;'  placeholder="{{_form_data[item]}}" required></br>
     {% endfor  %}
