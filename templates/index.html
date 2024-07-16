@@ -1,9 +1,16 @@
-{% extends 'base.html' %} {% block title %}{{business_info['name']}}{% endblock
-%} {% block content %}
+{% extends 'base.html' %}
+ {% block title %}{{business_info['name']}}{% endblock
+%}
+{% block content %}
 <ul>
+{% for line in _index_menu %}
+  <li><a href="{{_index_menu[line].lower().replace(" ", "_")}}">{{_index_menu[line]}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
+<!--
   <li><a href="{{href_menu[0]}}">{{_index_menu['first_line']}}</a></li>
   <li><a href="{{href_menu[1]}}">{{_index_menu['second_line']}}</a></li>
   <li><a href="{{href_menu[2]}}">{{_index_menu['third_line']}}</a></li>
   <li><a href="{{href_menu[3]}}">{{_index_menu['fourth_line']}}</a></li>
-</ul>
-{% endblock %}
+-->
